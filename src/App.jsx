@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { FaLinkedin, FaGreaterThan } from "react-icons/fa6"
 import { FaInstagram, FaGithub, FaRegFileAlt, FaFileDownload, FaMapMarkerAlt } from "react-icons/fa"
 import { IoPersonOutline, IoHomeOutline, IoClose } from "react-icons/io5"
@@ -32,6 +32,25 @@ function App() {
   const [subject, setSubject] = useState()
   const [Message, setMessage] = useState()
   const [click, setClick] = useState(false)
+
+  useEffect(() => {
+    const reveal = () => {
+      const elements = document.querySelectorAll(".reveal")
+      elements.forEach(el => {
+        const position = el.getBoundingClientRect().top
+        const windowHeight = window.innerHeight
+
+        if(position<windowHeight - 40) {
+          el.classList.add("show")
+        }
+      })
+    }
+
+    window.addEventListener("scroll", reveal)
+    reveal()
+
+    return () => window.removeEventListener("scroll", reveal)
+  }, [])
 
   const handleHello = () => {
     alert("Hello! Welcome to my Portfolio")
@@ -90,8 +109,8 @@ function App() {
     {click ? <IoClose onClick={() => setClick(false)} className="text-3xl text-white bg-blue-400 rounded-full p-1 fixed top-5 right-5 z-10 flex md:hidden"></IoClose> : <LuMenu onClick={() => setClick(true)} className="text-3xl text-white bg-blue-400 rounded-full p-1 fixed top-5 right-5 z-10 flex md:hidden"></LuMenu>}
 
     {/* Sidebar Section */}
-    <div className="fixed w-1/2 h-screen z-10 flex flex-col justify-center bg-linear-to-t from-yellow-950 via-yellow-600 to-yellow-300 md:hidden transition-all ease-in-out duration-1000" style={{left : click ? "0%" : "100%"}}>
-      
+    <div className="fixed w-1/2 h-screen z-10 flex flex-col justify-center bg-linear-to-t from-yellow-950 via-yellow-600 to-yellow-300 md:hidden transition-all ease-in-out duration-1000" style={{ left: click ? "0%" : "100%" }}>
+
       {/* Profile */}
       <div className="flex justify-center py-5">
         <img src={Navbarimage} alt="Profile-Image" className="w-32 h-32 rounded-full border-8 border-gray-700 hover:border-blue-500 transition-all ease-in-out duration-1000 cursor-pointer object-cover" />
@@ -123,7 +142,7 @@ function App() {
     <div className="w-full md:ml-[25%] lg:ml-[20%]">
 
       {/* Home Page */}
-      <section id="home" className="relative text-white">
+      <section id="home" className="relative text-white reveal">
         <img src={Profilepicture} alt="Profile-Image" className="w-full h-screen object-cover object-center" />
         <div className="absolute top-2/5 left-3">
           <h1 className="text-base sm:text-lg md:text-2xl lg:text-4xl font-black">Batrick Reizon</h1>
@@ -135,7 +154,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="bg-gray-50 px-3 py-10">
+      <section id="about" className="bg-gray-50 px-3 py-10 reveal">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-black underline underline-offset-8 decoration-4 decoration-blue-400">About</h1>
         <p className="py-5 font-extralight text-sm md:text-base">Hello I'm Batrick Reizon, Frontend Developer. I am dediciated and Skilled in frontend development with hands-on experience in HTML, CSS, Tailwind CSS, and JavaScript to build responsive and visually appealing user interfaces. Proficient in React.js for creating dynamic single-page applications, with working knowledge of integrating basic APIs.</p>
         <div className="lg:py-10 flex flex-wrap lg:flex-nowrap gap-5 justify-center">
@@ -155,13 +174,13 @@ function App() {
                 <p className="flex items-center gap-2 font-black text-sm sm:text-base"><FaGreaterThan className="text-blue-300"></FaGreaterThan>Email : <span className="font-medium">batrickreizon@gmail.com</span></p>
               </div>
             </div>
-            <p className="text-sm md:text-base">Proficient in React.js for creating dynamic single-page applications, with working knowledge of integrating basic APIs. Comfortable using Git and GitHub for version control and collaborative development.</p>
+            <p className="text-sm md:text-base sm:pb-5">Proficient in React.js for creating dynamic single-page applications, with working knowledge of integrating basic APIs. Comfortable using Git and GitHub for version control and collaborative development.</p>
           </div>
         </div>
       </section>
 
       {/* Education Section */}
-      <section className="bg-blue-100 py-10 px-3">
+      <section className="bg-blue-100 py-10 px-3 reveal">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-black underline underline-offset-8 decoration-4 decoration-blue-400">Education</h1>
         <div className="flex flex-wrap lg:gap-5 xl:gap-10 2xl:gap-40">
           <div className="py-3">
@@ -176,7 +195,7 @@ function App() {
       </section>
 
       {/* Skill Section */}
-      <section className="bg-gray-50 py-10 px-3">
+      <section className="bg-gray-50 py-10 px-3 reveal">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-black underline underline-offset-8 decoration-4 decoration-blue-400">Skills</h1>
         <p className="font-extralight py-5 text-sm sm:text-base">I have Skilled in HTML, CSS, TailwindCSS, JavaScript, and React, I transform ideas into interactive and visually appealing web experiences. I create fast, responsive, and dynamic frontend solutions with clean code and modern design practices.</p>
         <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-10">
@@ -223,14 +242,14 @@ function App() {
       </section>
 
       {/* Resume Section */}
-      <section id="resume" className="bg-blue-100 py-10 px-3">
+      <section id="resume" className="bg-blue-100 py-10 px-3 reveal">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-black underline underline-offset-8 decoration-4 decoration-blue-400">Resume</h1>
         <p className="my-3 font-extralight text-sm sm:text-base">You can find my resume attached below. Kindly click the link to view my complete profile.</p>
         <a href={Resume} target="blank" className="cursor-pointer flex gap-1 items-center bg-blue-400 text-white px-3 py-1 animate-pulse hover:bg-blue-600 rounded-xs w-fit font-black">Resume<FaFileDownload></FaFileDownload></a>
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-10 px-3 bg-gray-50">
+      <section id="portfolio" className="py-10 px-3 bg-gray-50 reveal">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-black underline underline-offset-8 decoration-4 decoration-blue-400">Portfolio</h1>
         <p className="my-3 font-extralight text-sm sm:text-base">I have worked on several projects as a Frontend Developer, focusing on building responsive, user-friendly, and modern web interfaces.</p>
 
@@ -272,9 +291,9 @@ function App() {
           </div>
 
           <div className="relative border border-black w-fit rounded-sm overflow-hidden group">
-            <a href="https://randomnumber-react-sigma.vercel.app/" target="blank">
+            <a href="https://guessnumber-react.vercel.app/" target="blank">
               <img src={Random} alt="Random" className="w-96 h-60 opacity-60 blur-xs group-hover:blur-none transition-transform duration-1000 ease-in-out hover:scale-110" />
-              <p className="absolute top-[45%] left-5/12 text-lg font-black">Random</p>
+              <p className="absolute top-[45%] left-5/12 text-lg font-black">Guess Number</p>
             </a>
           </div>
 
@@ -323,7 +342,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="flex flex-col bg-blue-100 py-10 px-3">
+      <section id="contact" className="flex flex-col bg-blue-100 py-10 px-3 reveal">
         <h1 className="text-xl md:text-2xl lg:text-3xl font-black underline underline-offset-8 decoration-4 decoration-blue-400">Contact Me</h1>
         <p className="my-3 font-extralight text-sm sm:text-base">Let's get in touch and Feel free to reach out anytime!</p>
 
