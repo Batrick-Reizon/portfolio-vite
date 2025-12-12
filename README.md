@@ -1,16 +1,21 @@
-# React + Vite
+# Portfolio
+**Portfolio** is a modern, responsive personal portfolio website built using **Vite, React, HTML5, and Tailwind CSS**. It showcases your projects, skills, and achievements with a sleek interface and smooth navigation, all optimized for performance and user experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features
+- **Home & Intro Section** – Clean and engaging landing section
+- **Projects Showcase** – Display your work with links and descriptions
+- **Skills Section** – Highlight your technical skills and tools
+- **Responsive Design** – Looks great on desktop, tablet, and mobile
+- **Fast & Optimized** – Built with Vite for lightning-fast performance
+- **Modern UI** – Styled with Tailwind CSS to match contemporary design standards
 
-Currently, two official plugins are available:
+# Technologies Used
+- **HTML5** – for semantic structure and accessibility
+- **Tailwind CSS** – for responsive and utility-first styling
+- **React** – for dynamic components and interactive UI
+- **Vite** – for fast development and optimized builds
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# How to View
+You can explore the live portfolio by visiting https://portfolio-vite-iota-jet.vercel.app/. Check out the projects, navigate the sections smoothly, and enjoy the modern layout!
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Thank you for visiting my Portfolio Vite project!
